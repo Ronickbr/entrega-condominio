@@ -1,0 +1,29 @@
+{
+  "name": "condominio-gestao-encomendas",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Sistema de Recebimento e Gestão de Encomendas para Condomínios - PRD OpenCode",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "web:dev": "cd web && npm run dev",
+    "web:build": "cd web && npm run build",
+    "web:preview": "cd web && npm run preview",
+    "web:typecheck": "cd web && npx tsc --noEmit",
+    "web:lint": "cd web && npm run lint",
+    "supabase:init": "npx supabase init",
+    "supabase:start": "npx supabase start",
+    "supabase:stop": "npx supabase stop",
+    "supabase:status": "npx supabase status",
+    "db:reset": "npx supabase db reset",
+    "db:migration:new": "npx supabase migration new",
+    "db:push": "npx supabase db push",
+    "fn:deploy:all": "npx supabase functions deploy --project-ref local",
+    "test:e2e": "npx playwright test",
+    "test:e2e:ui": "npx playwright test --ui"
+  },
+  "devDependencies": {
+    "supabase": "^1.200.3"
+  }
+}

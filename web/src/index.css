@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Design tokens — Sistema de Encomendas
+   Tema escuro com destaque vermelho.
+   ============================================================ */
+
+@theme {
+  --radius: 0.75rem;
+
+  /* Superfícies — tema claro */
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(0 0% 13%);
+
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(0 0% 13%);
+
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(0 0% 13%);
+
+  /* Ações / marca — vermelho */
+  --color-primary: hsl(4 78% 52%);
+  --color-primary-foreground: hsl(0 0% 100%);
+
+  /* Superfícies neutras */
+  --color-secondary: hsl(0 0% 96%);
+  --color-secondary-foreground: hsl(0 0% 15%);
+
+  --color-muted: hsl(0 0% 96%);
+  --color-muted-foreground: hsl(0 0% 45%);
+
+  --color-accent: hsl(0 0% 95%);
+  --color-accent-foreground: hsl(0 0% 12%);
+
+  /* Semânticos */
+  --color-destructive: hsl(4 78% 52%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+
+  --color-success: hsl(152 60% 36%);
+  --color-success-foreground: hsl(0 0% 100%);
+
+  --color-warning: hsl(38 90% 42%);
+  --color-warning-foreground: hsl(0 0% 100%);
+
+  --color-info: hsl(210 60% 45%);
+  --color-info-foreground: hsl(0 0% 100%);
+
+  /* Bordas e inputs */
+  --color-border: hsl(0 0% 88%);
+  --color-input: hsl(0 0% 87%);
+  --color-ring: hsl(4 78% 52%);
+
+  /* Sidebar */
+  --color-sidebar-background: hsl(0 0% 98%);
+  --color-sidebar-foreground: hsl(0 0% 20%);
+  --color-sidebar-primary: hsl(4 78% 52%);
+  --color-sidebar-primary-foreground: hsl(0 0% 100%);
+  --color-sidebar-accent: hsl(0 0% 95%);
+  --color-sidebar-accent-foreground: hsl(0 0% 12%);
+  --color-sidebar-border: hsl(0 0% 88%);
+  --color-sidebar-ring: hsl(4 78% 52%);
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --container-2xl: 1400px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    /* GPU-accelerate border animations */
+    will-change: auto;
+  }
+  html {
+    scroll-behavior: smooth;
+    /* Prevent layout shifts */
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Reduce paint complexity */
+    contain: layout style;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  /* Optimize images by default */
+  img {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 200px;
+  }
+  /* GPU-accelerate fixed/sticky elements */
+  .sticky {
+    will-change: transform;
+  }
+}
+
+/* ============================================================
+   Tema escuro — padrão do app
+   ============================================================ */
+.dark {
+  --color-background: hsl(0 0% 9%);
+  --color-foreground: hsl(0 0% 93%);
+
+  --color-card: hsl(0 0% 13%);
+  --color-card-foreground: hsl(0 0% 93%);
+
+  --color-popover: hsl(0 0% 14%);
+  --color-popover-foreground: hsl(0 0% 93%);
+
+  /* Vermelho vibrante como primário */
+  --color-primary: hsl(4 84% 56%);
+  --color-primary-foreground: hsl(0 0% 100%);
+
+  --color-secondary: hsl(0 0% 16%);
+  --color-secondary-foreground: hsl(0 0% 90%);
+
+  --color-muted: hsl(0 0% 17%);
+  --color-muted-foreground: hsl(0 0% 60%);
+
+  --color-accent: hsl(0 0% 18%);
+  --color-accent-foreground: hsl(0 0% 93%);
+
+  /* Semânticos */
+  --color-destructive: hsl(4 84% 56%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+
+  --color-success: hsl(152 58% 50%);
+  --color-success-foreground: hsl(0 0% 9%);
+
+  --color-warning: hsl(38 90% 55%);
+  --color-warning-foreground: hsl(0 0% 9%);
+
+  --color-info: hsl(210 60% 55%);
+  --color-info-foreground: hsl(0 0% 9%);
+
+  /* Bordas e inputs */
+  --color-border: hsl(0 0% 20%);
+  --color-input: hsl(0 0% 22%);
+  --color-ring: hsl(4 84% 56%);
+
+  /* Sidebar */
+  --color-sidebar-background: hsl(0 0% 8%);
+  --color-sidebar-foreground: hsl(0 0% 90%);
+  --color-sidebar-primary: hsl(4 84% 56%);
+  --color-sidebar-primary-foreground: hsl(0 0% 100%);
+  --color-sidebar-accent: hsl(0 0% 15%);
+  --color-sidebar-accent-foreground: hsl(0 0% 93%);
+  --color-sidebar-border: hsl(0 0% 18%);
+  --color-sidebar-ring: hsl(4 84% 56%);
+}
+
+/* Portaria em telas pequenas: botões primários maiores (toque) */
+@media (max-width: 640px) {
+  button[data-primary-mobile='true'] {
+    min-height: 56px;
+    font-size: 1rem;
+  }
+}
+
+/* Movimento reduzido: desliga transições/animacões */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Smooth page transitions */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Apply subtle entrance animation to main content */
+main > div {
+  animation: fade-in 0.15s ease-out;
+}
+
+/* Optimize dropdown/popover rendering */
+[role="menu"],
+[role="dialog"],
+[role="listbox"] {
+  will-change: transform, opacity;
+}
+
+/* Optimize sidebar transitions */
+aside {
+  contain: layout style;
+}
+
+/* Optimize card hover performance */
+[class*="rounded-xl"][class*="border"] {
+  transition-property: border-color, background-color, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Optimize button press feedback */
+button:active:not(:disabled) {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
