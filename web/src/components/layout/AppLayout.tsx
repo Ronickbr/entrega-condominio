@@ -139,41 +139,43 @@ function SidebarContent({ profile, role, onSignOut, onToggleTheme, theme }: {
     <div className="flex h-full flex-col">
       <Brand />
 
-      <div className="flex-1 overflow-y-auto px-2 pb-4">
-        <NavLinks
-          items={
-            isDashboardRole(role)
-              ? DASHBOARD_NAV.filter((i) => i.to !== '/dashboard/audit' || role === Role.SUPER_ADMIN)
-              : isReceptionRole(role)
-                ? RECEPTION_NAV
-                : isResidentRole(role)
-                  ? RESIDENT_NAV
-                  : []
-          }
-        />
-      </div>
+      <div className="flex-1 overflow-y-auto">
+        <div className="px-2 pb-4">
+          <NavLinks
+            items={
+              isDashboardRole(role)
+                ? DASHBOARD_NAV.filter((i) => i.to !== '/dashboard/audit' || role === Role.SUPER_ADMIN)
+                : isReceptionRole(role)
+                  ? RECEPTION_NAV
+                  : isResidentRole(role)
+                    ? RESIDENT_NAV
+                    : []
+            }
+          />
+        </div>
 
-      <div className="border-t border-[hsl(0,0%,18%)] p-3">
-        <div className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[hsl(4,84%,56%)] text-xs font-semibold text-white">
-            {initials(profile?.full_name)}
-          </span>
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium text-[hsl(0,0%,93%)]">{profile?.full_name}</p>
-            {role && <p className="truncate text-xs text-[hsl(0,0%,60%)]">{ROLE_LABELS[role]}</p>}
+        <div className="mt-4 border-t border-[hsl(0,0%,18%)] p-3">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[hsl(4,84%,56%)] text-xs font-semibold text-white">
+              {initials(profile?.full_name)}
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm font-medium text-[hsl(0,0%,93%)]">{profile?.full_name}</p>
+              {role && <p className="truncate text-xs text-[hsl(0,0%,60%)]">{ROLE_LABELS[role]}</p>}
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Alternar tema"
+              className="text-[hsl(0,0%,60%)] hover:text-[hsl(0,0%,93%)]"
+              onClick={onToggleTheme}
+            >
+              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </Button>
+            <Button variant="ghost" size="icon" aria-label="Sair" className="text-[hsl(0,0%,60%)] hover:text-[hsl(0,0%,93%)]" onClick={onSignOut}>
+              <LogOut className="h-4 w-4" />
+            </Button>
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label="Alternar tema"
-            className="text-[hsl(0,0%,60%)] hover:text-[hsl(0,0%,93%)]"
-            onClick={onToggleTheme}
-          >
-            {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </Button>
-          <Button variant="ghost" size="icon" aria-label="Sair" className="text-[hsl(0,0%,60%)] hover:text-[hsl(0,0%,93%)]" onClick={onSignOut}>
-            <LogOut className="h-4 w-4" />
-          </Button>
         </div>
       </div>
     </div>
