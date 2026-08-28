@@ -214,16 +214,18 @@ export function AppLayout({ children }: { children: ReactNode }) {
             onClick={() => setOpen(false)}
           >
             <aside
-              className="h-full w-72 max-w-[85%] border-r border-[hsl(0,0%,18%)] bg-[hsl(0,0%,8%)] animate-in slide-in-from-left duration-200"
+              className="flex h-full w-72 max-w-[85%] flex-col border-r border-[hsl(0,0%,18%)] bg-[hsl(0,0%,8%)] animate-in slide-in-from-left duration-200"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between border-b border-[hsl(0,0%,18%)] px-3 py-3">
+              <div className="flex shrink-0 items-center justify-between border-b border-[hsl(0,0%,18%)] px-3 py-3">
                 <span className="text-sm font-semibold text-[hsl(0,0%,93%)]">Menu</span>
                 <Button variant="ghost" size="icon" aria-label="Fechar menu" className="text-[hsl(0,0%,60%)] hover:text-[hsl(0,0%,93%)]" onClick={() => setOpen(false)}>
                   <X className="h-4 w-4" />
                 </Button>
               </div>
-              <MemoSidebarContent {...sidebarProps} />
+              <div className="flex-1 overflow-hidden">
+                <MemoSidebarContent {...sidebarProps} />
+              </div>
             </aside>
           </div>
         )}
